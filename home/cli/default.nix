@@ -14,7 +14,6 @@
     fzf
     htop
     lazygit
-    neovim
     nitch
     nvtopPackages.full
     oh-my-posh

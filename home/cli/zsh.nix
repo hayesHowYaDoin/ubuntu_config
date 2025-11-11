@@ -67,7 +67,7 @@ in {
         home = "home-manager switch --flake";
         ls = "eza";
         c = "clear";
-        vim = "nvim";
+        v = "nvim";
         cat = "bat";
         du = "dust";
       };
