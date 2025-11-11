@@ -37,7 +37,7 @@ in {
         eval "$(fzf --zsh)"
         eval "$(zoxide init --cmd cd zsh)"
         eval "$(direnv hook zsh)"
-        eval "$(oh-my-posh init zsh --config ${cfg.theme}"
+        eval "$(oh-my-posh init zsh --config ${cfg.theme})"
       '';
 
       history = {

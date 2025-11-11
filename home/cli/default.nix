@@ -15,6 +15,7 @@
     htop
     lazygit
     nitch
+    nvim
     nvtopPackages.full
     oh-my-posh
     presenterm

@@ -14,6 +14,11 @@
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nvim_config = {
+      url = "github:hayesHowYaDoin/nvim_config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -29,6 +34,11 @@
       config = {
         allowUnfree = true;
       };
+      overlays = [
+        (self: super: {
+          nvim = inputs.nvim_config.packages.${super.system}.default;
+        })
+      ];
     };
   in {
     # Standalone home-manager configuration entrypoints

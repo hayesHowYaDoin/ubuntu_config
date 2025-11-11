@@ -38,9 +38,6 @@
     username = "default";
     homeDirectory = /home/default;
     stateVersion = "24.11"; # Please read the comment before changing.
-    packages = with pkgs; [
-      # TODO: Add packages
-    ];
   };
 
   programs.home-manager.enable = true;
