@@ -26,9 +26,10 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs.gnomeExtensions; [
       just-perfection
-      pop-shell
-      workspace-indicator
       appindicator
+      vitals
+      pop-shell
+      workspace-matrix
     ];
 
     dconf.settings = {
@@ -37,8 +38,9 @@ in {
         enabled-extensions = [
           "just-perfection-desktop@just-perfection"
           "pop-shell@system76.com"
-          "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
           "appindicatorsupport@rgcjonas.gmail.com"
+          "Vitals@CoreCoding.com"
+          "wsmatrix@martin.zurowietz.de"
         ];
       };
 
@@ -47,19 +49,44 @@ in {
         picture-uri-dark = builtins.toString cfg.backgroundDark;
       };
 
+      "org/gnome/mutter" = {
+        overlay-key = "Super_L";
+        workspaces-only-on-primary = false;
+      };
+
       "org/gnome/shell/extensions/just-perfection" = {
-        dash = false; # Hide the dash/sidebar
+        dash = false; # Dash/sidebar
         workspace-switcher-should-show = true;
-        panel = true; # Keep top bar
-        activities-button = false; # Optional: hide Activities button
+        workspace-popup = true;
+        panel = true; # Top bar
+        activities-button = false;
+        app-menu = false;
       };
 
       "org/gnome/shell/extensions/pop-shell" = {
         tile-by-default = true;
         active-hint = true;
+        active-hint-border-radius = 4;
         smart-gaps = true;
         gap-inner = 4;
         gap-outer = 4;
+        show-title = false;
+      };
+
+      "org/gnome/desktop/wm/keybindings" = {
+        switch-to-workspace-left = ["<Super><Control>Left"];
+        switch-to-workspace-right = ["<Super><Control>Right"];
+        switch-to-workspace-up = ["<Super><Control>Up"];
+        switch-to-workspace-down = ["<Super><Control>Down"];
+      };
+
+      "org/gnome/shell/extensions/wsmatrix-keybindings" = {
+        workspace-overview-toggle = ["<Super>w"];
+        workspace-overview-right = ["Right"];
+        workspace-overview-left = ["Left"];
+        workspace-overview-up = ["Up"];
+        workspace-overview-down = ["Down"];
+        workspace-overview-confirm = ["Return" "Escape"];
       };
     };
   };
