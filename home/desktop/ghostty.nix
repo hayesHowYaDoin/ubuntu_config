@@ -44,7 +44,11 @@ in {
     xdg.desktopEntries.ghostty = {
       name = "Ghostty";
       genericName = "Terminal";
-      exec = "${wrappedGhostty}/bin/ghostty";
+      exec = "${
+        if cfg.nixGL
+        then wrappedGhostty
+        else pkgs.ghostty
+      }/bin/ghostty";
       terminal = false;
       categories = ["System" "TerminalEmulator"];
       icon = "com.mitchellh.ghostty";
