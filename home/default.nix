@@ -4,7 +4,10 @@
     ./desktop
   ];
 
-  targets.genericLinux.enable = true;
+  targets.genericLinux = {
+    enable = true;
+    nixGL.packages = inputs.nixgl.packages;
+  };
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
@@ -24,6 +27,7 @@
     desktop = {
       ghostty = {
         enable = true;
+        nixGL = true;
         opacity = 0.8;
         shader = ../assets/cursor.glsl;
       };

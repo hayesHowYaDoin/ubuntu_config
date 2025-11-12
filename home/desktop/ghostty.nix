@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
@@ -8,6 +9,7 @@ with lib; let
 in {
   options.features.desktop.ghostty = {
     enable = mkEnableOption "Enable ghostty configuration.";
+    nixGL = mkEnableOption "Whether or not to wrap ghostty with nixGL";
     opacity = mkOption {
       type = types.float;
       example = 1.0;
@@ -23,6 +25,10 @@ in {
   config = mkIf cfg.enable {
     programs.ghostty = {
       enable = true;
+      package =
+        if cfg.nixGL
+        then config.lib.nixGL.wrap pkgs.ghostty
+        else pkgs.ghostty;
       settings = {
         background-opacity = cfg.opacity;
         custom-shader = builtins.toString cfg.shader;

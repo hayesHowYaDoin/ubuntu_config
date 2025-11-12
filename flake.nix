@@ -18,11 +18,17 @@
       url = "github:hayesHowYaDoin/nvim_config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixgl = {
+      url = "github:guibou/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     home-manager,
     nix-colors,
+    nixgl,
     nixpkgs,
     ...
   } @ inputs: let
