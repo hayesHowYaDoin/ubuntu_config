@@ -26,13 +26,27 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs.gnomeExtensions; [
       just-perfection
+      pop-shell
+      workspace-indicator
+      appindicator
     ];
 
     dconf.settings = {
+      "org/gnome/shell" = {
+        disable-user-extensions = false;
+        enabled-extensions = [
+          "just-perfection-desktop@just-perfection"
+          "pop-shell@system76.com"
+          "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
+          "appindicatorsupport@rgcjonas.gmail.com"
+        ];
+      };
+
       "org/gnome/desktop/background" = {
         picture-uri = builtins.toString cfg.background;
         picture-uri-dark = builtins.toString cfg.backgroundDark;
       };
+
       "org/gnome/shell/extensions/just-perfection" = {
         dash = false; # Hide the dash/sidebar
         workspace-switcher-should-show = true;
