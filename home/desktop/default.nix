@@ -53,6 +53,14 @@ in {
         panel = true; # Keep top bar
         activities-button = false; # Optional: hide Activities button
       };
+
+      "org/gnome/shell/extensions/pop-shell" = {
+        tile-by-default = true;
+        active-hint = true;
+        smart-gaps = true;
+        gap-inner = 4;
+        gap-outer = 4;
+      };
     };
   };
 }
