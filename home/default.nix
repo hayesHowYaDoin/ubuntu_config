@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     ./cli
+    ./desktop
   ];
 
   targets.genericLinux.enable = true;
@@ -18,6 +19,13 @@
       zsh = {
         enable = true;
         theme = ../assets/pure.omp.json;
+      };
+    };
+    desktop = {
+      ghostty = {
+        enable = true;
+        opacity = 0.8;
+        shader = ../assets/cursor.glsl;
       };
     };
   };
