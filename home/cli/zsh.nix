@@ -19,7 +19,7 @@ in {
     programs.zsh = {
       enable = true;
 
-      initExtra = ''
+      initContent = ''
         # Keybinds
         bindkey -e
         bindkey '^ ' autosuggest-accept

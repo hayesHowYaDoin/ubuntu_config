@@ -1,16 +1,11 @@
-{pkgs, ...}: {
+{inputs, ...}: {
   imports = [
     ./cli
-    #    ./modules/desktop
   ];
 
-  stylix = {
-    enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    image = ../assets/wallpaper.jpeg;
-  };
-
   targets.genericLinux.enable = true;
+
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 
   features = {
     cli = {
@@ -25,13 +20,6 @@
         theme = ../assets/pure.omp.json;
       };
     };
-    #    desktop = {
-    #      fonts.enable = true;
-    #      ghostty.enable = true;
-    #      plasma.enable = true;
-    #      vscode.enable = true;
-    #      xdg.enable = true;
-    #    };
   };
 
   home = {
