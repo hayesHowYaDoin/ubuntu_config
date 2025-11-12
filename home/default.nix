@@ -32,10 +32,10 @@
       ghostty = {
         enable = true;
         nixGL = true;
-        opacity = 0.8;
+        opacity = 0.9;
         # shader = ../assets/cursor.glsl;
       };
-      dconf = {
+      gnome = {
         enable = true;
         background = ../assets/wallpaper.jpeg;
         backgroundDark = ../assets/wallpaper.jpeg;

@@ -5,6 +5,7 @@
     bat
     caligula
     chafa
+    claude-code
     coreutils
     devenv
     direnv
