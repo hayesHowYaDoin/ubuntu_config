@@ -26,13 +26,13 @@
   };
 
   outputs = {
+    self,
     home-manager,
     nix-colors,
     nixgl,
     nixpkgs,
     ...
   } @ inputs: let
-    # Supported systems
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
@@ -44,16 +44,18 @@
           nvim = inputs.nvim_config.packages.${super.system}.default;
 
           # Override workspace-matrix to use v50 for GNOME Shell 46 compatibility
-          gnomeExtensions = super.gnomeExtensions // {
-            workspace-matrix = super.gnomeExtensions.workspace-matrix.overrideAttrs (oldAttrs: rec {
-              version = "50";
-              src = super.fetchzip {
-                url = "https://extensions.gnome.org/extension-data/wsmatrixmartin.zurowietz.de.v${version}.shell-extension.zip";
-                sha256 = "gKOYq8CmrScOaz5b14pYFJCq/Prln2Evw5tjJ7jTJ8s=";
-                stripRoot = false;
-              };
-            });
-          };
+          gnomeExtensions =
+            super.gnomeExtensions
+            // {
+              workspace-matrix = super.gnomeExtensions.workspace-matrix.overrideAttrs (oldAttrs: rec {
+                version = "50";
+                src = super.fetchzip {
+                  url = "https://extensions.gnome.org/extension-data/wsmatrixmartin.zurowietz.de.v${version}.shell-extension.zip";
+                  sha256 = "gKOYq8CmrScOaz5b14pYFJCq/Prln2Evw5tjJ7jTJ8s=";
+                  stripRoot = false;
+                };
+              });
+            };
         })
       ];
     };

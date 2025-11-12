@@ -30,6 +30,7 @@ in {
       vitals
       pop-shell
       workspace-matrix
+      blur-my-shell
     ];
 
     dconf.settings = {
@@ -41,6 +42,7 @@ in {
           "appindicatorsupport@rgcjonas.gmail.com"
           "Vitals@CoreCoding.com"
           "wsmatrix@martin.zurowietz.de"
+          "blur-my-shell@aunetx"
         ];
       };
 
