@@ -4,6 +4,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Pin to nixpkgs that has GNOME 42 (for Ubuntu 22.04)
+    # nixpkgs-gnome.url = "github:nixos/nixpkgs/nixos-22.05";
+
+    # Pin to GNOME 46 (for Ubuntu 24.04)
+    nixpkgs-gnome.url = "github:nixos/nixpkgs/nixos-24.05";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,7 +18,7 @@
     stylix = {
       url = "github:danth/stylix";
       inputs.home-manager.follows = "home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-gnome";
     };
 
     nvim_config = {
