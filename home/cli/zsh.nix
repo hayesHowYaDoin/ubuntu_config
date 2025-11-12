@@ -70,6 +70,7 @@ in {
         v = "nvim";
         cat = "bat";
         du = "dust";
+        lgit = "lazygit";
       };
     };
   };
