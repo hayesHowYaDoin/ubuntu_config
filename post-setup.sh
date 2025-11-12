@@ -61,4 +61,12 @@ else
     echo "tiling-assistant@ubuntu.com not found or already disabled."
 fi
 
+# Disable ubuntu-dock extension (conflicts with just-perfection dash settings)
+if gnome-extensions list | grep -q "ubuntu-dock@ubuntu.com"; then
+    echo "Disabling ubuntu-dock@ubuntu.com..."
+    gnome-extensions disable ubuntu-dock@ubuntu.com || echo "Note: Could not disable ubuntu-dock@ubuntu.com"
+else
+    echo "ubuntu-dock@ubuntu.com not found or already disabled."
+fi
+
 echo "Post-setup complete!"
