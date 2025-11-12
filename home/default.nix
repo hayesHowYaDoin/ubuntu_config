@@ -33,7 +33,7 @@
         enable = true;
         nixGL = true;
         opacity = 0.8;
-        shader = ../assets/cursor.glsl;
+        # shader = ../assets/cursor.glsl;
       };
       dconf = {
         enable = true;
