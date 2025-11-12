@@ -6,34 +6,65 @@
 }:
 with lib; let
   cfg = config.features.cli.neofetch;
+
+  # Helper function to convert hex color to ANSI escape code
+  hexToAnsi = hex: let
+    # Remove # if present
+    cleanHex = lib.removePrefix "#" hex;
+    # Extract RGB values
+    r = lib.toInt ("0x" + builtins.substring 0 2 cleanHex);
+    g = lib.toInt ("0x" + builtins.substring 2 2 cleanHex);
+    b = lib.toInt ("0x" + builtins.substring 4 2 cleanHex);
+  in "\\033[38;2;${toString r};${toString g};${toString b}m";
+
+  # Map base16 colors to ANSI escape codes
+  colors = {
+    base00 = hexToAnsi config.colorScheme.palette.base00;
+    base01 = hexToAnsi config.colorScheme.palette.base01;
+    base02 = hexToAnsi config.colorScheme.palette.base02;
+    base03 = hexToAnsi config.colorScheme.palette.base03;
+    base04 = hexToAnsi config.colorScheme.palette.base04;
+    base05 = hexToAnsi config.colorScheme.palette.base05;
+    base06 = hexToAnsi config.colorScheme.palette.base06;
+    base07 = hexToAnsi config.colorScheme.palette.base07;
+    base08 = hexToAnsi config.colorScheme.palette.base08; # Red
+    base09 = hexToAnsi config.colorScheme.palette.base09; # Orange
+    base0A = hexToAnsi config.colorScheme.palette.base0A; # Yellow
+    base0B = hexToAnsi config.colorScheme.palette.base0B; # Green
+    base0C = hexToAnsi config.colorScheme.palette.base0C; # Cyan
+    base0D = hexToAnsi config.colorScheme.palette.base0D; # Blue
+    base0E = hexToAnsi config.colorScheme.palette.base0E; # Magenta
+    base0F = hexToAnsi config.colorScheme.palette.base0F; # Brown
+    reset = "\\033[0m";
+  };
+
   neofetchConfig =
     /*
     bash
     */
     ''
       print_info() {
-          info "\033[1;32m ╭─󱄅" distro   # cl2 (green)
-          info "\033[1;32m ├─" kernel     # cl2 (green)
-          info "\033[1;32m ├─" users      # cl2 (green)
-          info "\033[1;32m ├─󰏗" packages   # cl2 (green)
-          info "\033[1;32m ╰─" shell      # cl2 (green)
+          info "${colors.base0B} ╭─󱄅" distro   # Green
+          info "${colors.base0B} ├─" kernel     # Green
+          info "${colors.base0B} ├─" users      # Green
+          info "${colors.base0B} ├─󰏗" packages   # Green
+          info "${colors.base0B} ╰─" shell      # Green
           echo
-          info "\033[1;33m ╭─" de         # cl6 (yellow)
-          info "\033[1;33m ├─" term       # cl6 (yellow)
-          info "\033[1;33m ╰─" term_font  # cl6 (yellow)
-          info "\033[1;33m ├─󰂫" theme      # cl6 (yellow)
-          info "\033[1;33m ├─󰂫" icons      # cl6 (yellow)
-          info "\033[1;33m ╰─" font       # cl6 (yellow)
+          info "${colors.base0A} ╭─" de         # Yellow
+          info "${colors.base0A} ├─" term       # Yellow
+          info "${colors.base0A} ╰─" term_font  # Yellow
+          info "${colors.base0A} ├─󰂫" theme      # Yellow
+          info "${colors.base0A} ├─󰂫" icons      # Yellow
+          info "${colors.base0A} ╰─" font       # Yellow
           echo
-          info "\033[1;34m ╭─" model      # cl4 (blue)
-          info "\033[1;34m ├─󰍛" cpu        # cl4 (blue)
-          info "\033[1;34m ├─󰍹" gpu        # cl4 (blue)
-          info "\033[1;34m ├─" resolution # cl4 (blue)
-          info "\033[1;34m ├─" memory     # cl4 (blue)
-          info "\033[1;34m ├─ \033[0m" disk  # cl4 (blue), cl0 (reset)
-          info "\033[1;34m ╰─󰄉" uptime     # cl4 (blue)
+          info "${colors.base0D} ╭─" model      # Blue
+          info "${colors.base0D} ├─󰍛" cpu        # Blue
+          info "${colors.base0D} ├─󰍹" gpu        # Blue
+          info "${colors.base0D} ├─" resolution # Blue
+          info "${colors.base0D} ├─" memory     # Blue
+          info "${colors.base0D} ├─ ${colors.reset}" disk  # Blue, then reset
+          info "${colors.base0D} ╰─󰄉" uptime     # Blue
       }
-
 
       title_fqdn="on"
       kernel_shorthand="on"
@@ -73,17 +104,18 @@ with lib; let
       underline_char="󰍴"
       separator=" "
       block_range=(1 8)
-      magenta="\033[1;35m"
-      green="\033[1;32m"
-      white="\033[1;37m"
-      blue="\033[1;34m"
-      red="\033[1;31m"
-      black="\033[1;40;30m"
-      yellow="\033[1;33m"
-      cyan="\033[1;36m"
-      reset="\033[0m"
-      bgyellow="\033[1;43;33m"
-      bgwhite="\033[1;47;37m"
+
+      # Color definitions using nix-colors
+      magenta="${colors.base0E}"
+      green="${colors.base0B}"
+      white="${colors.base05}"
+      blue="${colors.base0D}"
+      red="${colors.base08}"
+      black="${colors.base00}"
+      yellow="${colors.base0A}"
+      cyan="${colors.base0C}"
+      reset="${colors.reset}"
+
       color_blocks="on"
       block_width=4
       block_height=1
@@ -114,7 +146,6 @@ with lib; let
       xoffset=0
       background_color=
       stdout="off"
-
     '';
 in {
   options.features.cli.neofetch.enable = mkEnableOption "enable neofetch";
