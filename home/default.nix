@@ -35,6 +35,11 @@
         opacity = 0.8;
         #        shader = ../assets/cursor.glsl;
       };
+      gnome = {
+        enable = true;
+        background = ../assets/wallpaper.jpeg;
+        backgroundDark = ../assets/wallpaper.jpeg;
+      };
     };
   };
 
