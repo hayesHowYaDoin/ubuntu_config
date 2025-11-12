@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.features.desktop.ghostty;
+  wrappedGhostty = config.lib.nixGL.wrap pkgs.ghostty;
 in {
   options.features.desktop.ghostty = {
     enable = mkEnableOption "Enable ghostty configuration.";
@@ -28,7 +29,7 @@ in {
       enable = true;
       package =
         if cfg.nixGL
-        then config.lib.nixGL.wrap pkgs.ghostty
+        then wrappedGhostty
         else pkgs.ghostty;
       settings =
         {
@@ -38,6 +39,15 @@ in {
           custom-shader = builtins.toString cfg.shader;
           custom-shader-animation = "always";
         };
+    };
+
+    xdg.desktopEntries.ghostty = {
+      name = "Ghostty";
+      genericName = "Terminal";
+      exec = "${wrappedGhostty}/bin/ghostty";
+      terminal = false;
+      categories = ["System" "TerminalEmulator"];
+      icon = "com.mitchellh.ghostty";
     };
   };
 }

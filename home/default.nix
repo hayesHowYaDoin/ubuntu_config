@@ -28,6 +28,7 @@
       };
     };
     desktop = {
+      fonts.enable = true;
       ghostty = {
         enable = true;
         nixGL = true;
