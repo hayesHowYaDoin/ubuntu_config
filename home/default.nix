@@ -6,7 +6,10 @@
 
   targets.genericLinux = {
     enable = true;
-    nixGL.packages = inputs.nixgl.packages;
+    nixGL = {
+      packages = inputs.nixgl.packages;
+      installScripts = ["mesa"];
+    };
   };
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
@@ -29,7 +32,7 @@
         enable = true;
         nixGL = true;
         opacity = 0.8;
-        shader = ../assets/cursor.glsl;
+        #        shader = ../assets/cursor.glsl;
       };
     };
   };

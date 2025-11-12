@@ -16,7 +16,8 @@ in {
       description = "Set window opacity.";
     };
     shader = mkOption {
-      type = types.path;
+      type = types.nullOr types.path;
+      default = null;
       example = ../assets/shaders/starfield-colors.glsl;
       description = "Set custom shader from glsl file.";
     };
@@ -29,11 +30,14 @@ in {
         if cfg.nixGL
         then config.lib.nixGL.wrap pkgs.ghostty
         else pkgs.ghostty;
-      settings = {
-        background-opacity = cfg.opacity;
-        custom-shader = builtins.toString cfg.shader;
-        custom-shader-animation = "always";
-      };
+      settings =
+        {
+          background-opacity = cfg.opacity;
+        }
+        // lib.optionalAttrs (cfg.shader != builtins.null) {
+          custom-shader = builtins.toString cfg.shader;
+          custom-shader-animation = "always";
+        };
     };
   };
 }
