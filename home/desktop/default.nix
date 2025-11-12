@@ -2,6 +2,6 @@
   imports = [
     ./fonts.nix
     ./ghostty.nix
-    ./gnome.nix
+    ./dconf.nix
   ];
 }

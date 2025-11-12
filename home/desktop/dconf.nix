@@ -4,10 +4,10 @@
   ...
 }:
 with lib; let
-  cfg = config.features.desktop.gnome;
+  cfg = config.features.desktop.dconf;
 in {
-  options.features.desktop.gnome = {
-    enable = mkEnableOption "Enable gnome configuration.";
+  options.features.desktop.dconf = {
+    enable = mkEnableOption "Enable dconf configuration.";
     background = mkOption {
       type = types.path;
       example = ../assets/wallpaper.jpeg;

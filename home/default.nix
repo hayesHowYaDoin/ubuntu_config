@@ -33,9 +33,9 @@
         enable = true;
         nixGL = true;
         opacity = 0.8;
-        #        shader = ../assets/cursor.glsl;
+        shader = ../assets/cursor.glsl;
       };
-      gnome = {
+      dconf = {
         enable = true;
         background = ../assets/wallpaper.jpeg;
         backgroundDark = ../assets/wallpaper.jpeg;
