@@ -14,7 +14,7 @@
         userName = "hayesHowYaDoin";
         userEmail = "jordanhayes98@gmail.com";
       };
-      neofetch.enable = false;
+      neofetch.enable = true;
       zsh = {
         enable = true;
         theme = ../assets/pure.omp.json;
