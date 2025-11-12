@@ -7,14 +7,57 @@
 with lib; let
   cfg = config.features.cli.neofetch;
 
+  # Helper function to convert a single hex character to decimal
+  hexCharToInt = c:
+    if c == "0"
+    then 0
+    else if c == "1"
+    then 1
+    else if c == "2"
+    then 2
+    else if c == "3"
+    then 3
+    else if c == "4"
+    then 4
+    else if c == "5"
+    then 5
+    else if c == "6"
+    then 6
+    else if c == "7"
+    then 7
+    else if c == "8"
+    then 8
+    else if c == "9"
+    then 9
+    else if c == "a" || c == "A"
+    then 10
+    else if c == "b" || c == "B"
+    then 11
+    else if c == "c" || c == "C"
+    then 12
+    else if c == "d" || c == "D"
+    then 13
+    else if c == "e" || c == "E"
+    then 14
+    else if c == "f" || c == "F"
+    then 15
+    else 0;
+
+  # Helper function to convert two hex characters to decimal (0-255)
+  hexPairToInt = hex: let
+    high = builtins.substring 0 1 hex;
+    low = builtins.substring 1 1 hex;
+  in
+    (hexCharToInt high) * 16 + (hexCharToInt low);
+
   # Helper function to convert hex color to ANSI escape code
   hexToAnsi = hex: let
     # Remove # if present
     cleanHex = lib.removePrefix "#" hex;
     # Extract RGB values
-    r = lib.toInt ("0x" + builtins.substring 0 2 cleanHex);
-    g = lib.toInt ("0x" + builtins.substring 2 2 cleanHex);
-    b = lib.toInt ("0x" + builtins.substring 4 2 cleanHex);
+    r = hexPairToInt (builtins.substring 0 2 cleanHex);
+    g = hexPairToInt (builtins.substring 2 2 cleanHex);
+    b = hexPairToInt (builtins.substring 4 2 cleanHex);
   in "\\033[38;2;${toString r};${toString g};${toString b}m";
 
   # Map base16 colors to ANSI escape codes
