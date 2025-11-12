@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Pin to nixpkgs that has GNOME 42 (for Ubuntu 22.04)
+    # Pin to GNOME 42 (for Ubuntu 22.04)
     # nixpkgs-gnome.url = "github:nixos/nixpkgs/nixos-22.05";
 
     # Pin to GNOME 46 (for Ubuntu 24.04)
@@ -47,8 +47,6 @@
       ];
     };
   in {
-    # Standalone home-manager configuration entrypoints
-    # Available through 'home-manager --flake .#username@hostname'
     homeConfigurations = {
       default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;

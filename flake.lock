@@ -227,18 +227,18 @@
         "type": "github"
       }
     },
-    "nixpkgs-gnome42": {
+    "nixpkgs-gnome": {
       "locked": {
-        "lastModified": 1685573264,
-        "narHash": "sha256-Zffu01pONhs/pqH07cjlF10NnMDLok8ix5Uk4rhOnZQ=",
+        "lastModified": 1735563628,
+        "narHash": "sha256-OnSAY7XDSx7CtDoqNh8jwVwh4xNL/2HaJxGjryLWzX8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "380be19fbd2d9079f677978361792cb25e8a3635",
+        "rev": "b134951a4c9f3c995fd7be05f3243f8ecd65d798",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-22.05",
+        "ref": "nixos-24.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -331,7 +331,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-gnome42": "nixpkgs-gnome42",
+        "nixpkgs-gnome": "nixpkgs-gnome",
         "nvim_config": "nvim_config",
         "stylix": "stylix"
       }
@@ -346,7 +346,7 @@
         "flake-parts": "flake-parts_2",
         "gnome-shell": "gnome-shell",
         "nixpkgs": [
-          "nixpkgs-gnome42"
+          "nixpkgs-gnome"
         ],
         "nur": "nur",
         "systems": "systems_2",
