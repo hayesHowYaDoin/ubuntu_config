@@ -31,7 +31,7 @@
       };
       zsh = {
         enable = true;
-        theme = ../assets/pure.omp.json;
+        theme = ../assets/mine.omp.json;
       };
     };
     desktop = {
