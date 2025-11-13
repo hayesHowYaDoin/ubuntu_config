@@ -31,6 +31,7 @@
     nix-colors,
     nixgl,
     nixpkgs,
+    nvim_config,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -41,8 +42,6 @@
       };
       overlays = [
         (self: super: {
-          nvim = inputs.nvim_config.packages.${super.system}.default;
-
           # Override workspace-matrix to use v50 for GNOME Shell 46 compatibility
           gnomeExtensions =
             super.gnomeExtensions
@@ -67,6 +66,7 @@
         modules = [
           ./home/default.nix
           nix-colors.homeManagerModules.default
+          nvim_config.homeManagerModules.default
         ];
       };
     };

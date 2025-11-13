@@ -12,7 +12,7 @@
     };
   };
 
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
+  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-material-dark-medium;
 
   features = {
     cli = {
@@ -22,6 +22,13 @@
         userEmail = "jordanhayes98@gmail.com";
       };
       neofetch.enable = true;
+      nvim = {
+        enable = true;
+        theme = {
+          name = "gruvbox-material";
+          style = "dark-medium";
+        };
+      };
       zsh = {
         enable = true;
         theme = ../assets/pure.omp.json;
