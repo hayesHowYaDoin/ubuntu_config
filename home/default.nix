@@ -40,7 +40,7 @@
         enable = true;
         nixGL = true;
         opacity = 0.9;
-        # shader = ../assets/cursor.glsl;
+        shader = ../assets/cursor_warp.glsl;
       };
       gnome = {
         enable = true;

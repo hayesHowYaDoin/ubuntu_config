@@ -29,7 +29,6 @@ in {
       appindicator
       vitals
       pop-shell
-      workspace-matrix
       blur-my-shell
     ];
 
@@ -41,7 +40,6 @@ in {
           "pop-shell@system76.com"
           "appindicatorsupport@rgcjonas.gmail.com"
           "Vitals@CoreCoding.com"
-          "wsmatrix@martin.zurowietz.de"
           "blur-my-shell@aunetx"
         ];
       };
@@ -97,15 +95,6 @@ in {
 
       "org/gnome/shell/keybindings" = {
         focus-active-notification = ["@as []"]; # Disable to avoid conflicts
-      };
-
-      "org/gnome/shell/extensions/wsmatrix-keybindings" = {
-        workspace-overview-toggle = ["<Super>w"];
-        workspace-overview-right = ["Right"];
-        workspace-overview-left = ["Left"];
-        workspace-overview-up = ["Up"];
-        workspace-overview-down = ["Down"];
-        workspace-overview-confirm = ["Return" "Escape"];
       };
 
       "org/gnome/settings-daemon/plugins/media-keys" = {

@@ -63,7 +63,7 @@
   "transient_prompt": {
     "template": "\u2605\u00a0",
     "foreground_templates": [
-      "{{ if gt .Code 0 }}#ed8274{{ else }}#a9b665{{ end }}" 
+      "{{ if gt .Code 0 }}#ed8274{{ else }}#d8a657{{ end }}" 
     ]
   }
 }
