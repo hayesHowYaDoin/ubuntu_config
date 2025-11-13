@@ -51,13 +51,13 @@ with lib; let
 
     /* Panel (top bar) */
     #panel {
-      background-color: ${colors.bg1};
+      background-color: transparent;
       color: ${colors.fg};
       height: 32px;
     }
 
     .panel-corner {
-      -panel-corner-background-color: ${colors.bg1};
+      -panel-corner-background-color: transparent;
     }
 
     .panel-button {

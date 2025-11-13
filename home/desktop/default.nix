@@ -68,7 +68,7 @@ in {
         workspace-switcher-should-show = true;
         workspace-popup = true;
         panel = true; # Top bar
-        activities-button = false;
+        activities-button = true;
         app-menu = false;
       };
 
@@ -85,6 +85,14 @@ in {
         focus-up = ["<Super>Up"];
         focus-down = ["<Super>Down"];
         float-window-exceptions = [];
+      };
+
+      "org/gnome/shell/extensions/blur-my-shell/panel" = {
+        blur = true;
+        static-blur = true;
+        unblur-in-overview = false;
+        customize = true;
+        override-background = true;
       };
 
       "org/gnome/desktop/wm/keybindings" = {
