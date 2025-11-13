@@ -7,7 +7,7 @@
 with lib; let
   cfg = config.features.desktop.gnome;
 in {
-  imports = [./fonts.nix ./ghostty.nix];
+  imports = [./fonts.nix ./ghostty.nix ./gtk.nix ./gnome-shell.nix];
 
   options.features.desktop.gnome = {
     enable = mkEnableOption "Enable gnome configuration.";
@@ -39,7 +39,13 @@ in {
           "pop-shell@system76.com"
           "Vitals@CoreCoding.com"
           "blur-my-shell@aunetx"
+          "user-theme@gnome-shell-extensions.gcampax.github.com"
         ];
+      };
+
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+        gtk-theme = "Adwaita-dark";
       };
 
       "org/gnome/desktop/background" = {
