@@ -26,7 +26,6 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs.gnomeExtensions; [
       just-perfection
-      appindicator
       vitals
       pop-shell
       blur-my-shell
@@ -38,7 +37,6 @@ in {
         enabled-extensions = [
           "just-perfection-desktop@just-perfection"
           "pop-shell@system76.com"
-          "appindicatorsupport@rgcjonas.gmail.com"
           "Vitals@CoreCoding.com"
           "blur-my-shell@aunetx"
         ];
