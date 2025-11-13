@@ -84,6 +84,7 @@ in {
         focus-right = ["<Super>Right"];
         focus-up = ["<Super>Up"];
         focus-down = ["<Super>Down"];
+        float-window-exceptions = [];
       };
 
       "org/gnome/desktop/wm/keybindings" = {
@@ -99,6 +100,7 @@ in {
 
       "org/gnome/shell/keybindings" = {
         focus-active-notification = ["@as []"]; # Disable to avoid conflicts
+        toggle-application-view = ["<Super>a"]; # Show app grid
       };
 
       "org/gnome/settings-daemon/plugins/media-keys" = {
