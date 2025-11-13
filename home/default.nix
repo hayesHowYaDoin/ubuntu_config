@@ -39,7 +39,7 @@
       ghostty = {
         enable = true;
         nixGL = true;
-        opacity = 0.9;
+        opacity = 0.8;
         shader = ../assets/cursor_warp.glsl;
       };
       gnome = {
