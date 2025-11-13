@@ -56,6 +56,11 @@ in {
         workspaces-only-on-primary = false;
       };
 
+      "org/gnome/mutter/keybindings" = {
+        toggle-tiled-left = ["@as []"]; # Disable to avoid conflict with focus-left
+        toggle-tiled-right = ["@as []"]; # Disable to avoid conflict with focus-right
+      };
+
       "org/gnome/shell/extensions/just-perfection" = {
         dash = false; # Dash/sidebar
         workspace-switcher-should-show = true;
@@ -73,6 +78,10 @@ in {
         gap-inner = 4;
         gap-outer = 4;
         show-title = false;
+        focus-left = ["<Super>Left"];
+        focus-right = ["<Super>Right"];
+        focus-up = ["<Super>Up"];
+        focus-down = ["<Super>Down"];
       };
 
       "org/gnome/desktop/wm/keybindings" = {
@@ -80,6 +89,14 @@ in {
         switch-to-workspace-right = ["<Super><Control>Right"];
         switch-to-workspace-up = ["<Super><Control>Up"];
         switch-to-workspace-down = ["<Super><Control>Down"];
+        close = ["<Super>q"];
+        toggle-maximized = ["<Super>f"];
+        maximize = ["@as []"]; # Disable to avoid conflict with focus-up
+        unmaximize = ["@as []"]; # Disable to avoid conflict with focus-down
+      };
+
+      "org/gnome/shell/keybindings" = {
+        focus-active-notification = ["@as []"]; # Disable to avoid conflicts
       };
 
       "org/gnome/shell/extensions/wsmatrix-keybindings" = {
@@ -89,6 +106,18 @@ in {
         workspace-overview-up = ["Up"];
         workspace-overview-down = ["Down"];
         workspace-overview-confirm = ["Return" "Escape"];
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        custom-keybindings = [
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        ];
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        name = "Open Ghostty Terminal";
+        command = "ghostty";
+        binding = "<Super>t";
       };
     };
   };

@@ -33,6 +33,7 @@ in {
         else pkgs.ghostty;
       settings =
         {
+          window-decoration = false;
           background-opacity = cfg.opacity;
           background = config.colorScheme.palette.base00;
           foreground = config.colorScheme.palette.base05;
