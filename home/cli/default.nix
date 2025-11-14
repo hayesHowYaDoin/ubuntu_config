@@ -14,6 +14,7 @@
     fd
     fzf
     htop
+    impala
     lazygit
     nitch
     nvtopPackages.full
