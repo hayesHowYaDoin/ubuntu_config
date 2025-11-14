@@ -42,6 +42,10 @@
         opacity = 0.9;
         shader = ../assets/cursor_warp.glsl;
       };
+      obsidian = {
+        enable = true;
+        nixGL = true;
+      };
       gnome = {
         enable = true;
         background = ../assets/wallpaper.jpeg;

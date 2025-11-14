@@ -7,7 +7,7 @@
 with lib; let
   cfg = config.features.desktop.gnome;
 in {
-  imports = [./fonts.nix ./ghostty.nix ./gtk.nix ./gnome-shell.nix];
+  imports = [./fonts.nix ./ghostty.nix ./obsidian.nix ./gtk.nix ./gnome-shell.nix];
 
   options.features.desktop.gnome = {
     enable = mkEnableOption "Enable gnome configuration.";
@@ -114,6 +114,7 @@ in {
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
         ];
       };
 
@@ -121,6 +122,12 @@ in {
         name = "Open Ghostty Terminal";
         command = "ghostty";
         binding = "<Super>t";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+        name = "Open Obsidian";
+        command = "obsidian";
+        binding = "<Super>n";
       };
     };
   };
